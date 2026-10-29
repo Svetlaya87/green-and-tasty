@@ -1,4 +1,69 @@
 @use 'app/shared/styles/abstracts/colors' as color;
+li {
+  list-style-type: none;
+}
+// Загальний контейнер сторінки - додаємо фонові відступи для ефекту "картки у повітрі"
+.page-container {
+  min-width: 375px;
+  max-width: 680px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  background-color: color.$neutral-0;
+  border-radius: 16px;
+  border: 1px solid color.$neutral-200;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+// Стилі для заголовка та його бейджа
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: color.$neutral-900;
+  }
+}
+
+.header-badge {
+  background-color: #fef3c7;
+  color: #d97706;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+// Вирівнювання іконок адреси та дати в один рядок
+.meta-bar {
+  font-style: normal;
+  margin-bottom: 24px;
+
+  .meta-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 8px;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: color.$neutral-400;
+    white-space: nowrap;
+  }
+}
 
 .guest-card {
   background-color: color.$neutral-0;
@@ -183,5 +248,48 @@
     font-size: 16px;
     font-weight: 700;
     color: color.$neutral-900;
+  }
+}
+
+.page-footer {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid color.$neutral-200;
+}
+
+.grand-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .total-label {
+    font-size: 20px;
+    font-weight: 600;
+    color: color.$neutral-900;
+  }
+
+  .total-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #16a34a;
+  }
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: #4b5563;
+  color: color.$neutral-0;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #374151;
   }
 }

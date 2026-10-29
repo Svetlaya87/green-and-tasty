@@ -9,7 +9,7 @@ import { Participant } from '../../models/group-orders/participant.model';
   standalone: true,
   imports: [CurrencyPipe, DatePipe, ParticipantCardComponent],
   templateUrl: './group-order-page.component.html',
-  styleUrls: ['group-order-page.component.scss'],
+  styleUrls: ['./group-order-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class GroupOrderPageComponent {

@@ -1,9 +1,59 @@
-<main class="page">
-  <h1>Group Pre-Order</h1>
+<main class="page-container">
+  <header class="page-header">
+    <hgroup class="title-container">
+      <h1>Group Pre-Order</h1>
+      <span class="header-badge">Created New Pre-Order</span>
+    </hgroup>
 
-  <ul class="participants">
+    <address class="meta-bar">
+      <ul class="meta-list">
+          <li class="meta-item">
+            <span class="icon" aria-hidden="true">📍</span> Rustaveli Avenue 48
+          </li>
+          <li class="meta-item">
+            <span class="icon" aria-hidden="true">📅</span>
+            <time datetime="2026-10-21">Oct 21, 2026</time>
+          </li>
+          <li class="meta-item">
+            <span class="icon" aria-hidden="true">🕒</span>
+            <time datetime="12:00">12:00</time> - <time datetime="14:00">14:00</time>
+          </li>
+          <li class="meta-item">
+            <span class="icon" aria-hidden="true">👥</span> 4 of 5 guests
+          </li>
+        </ul>
+      </address>
+  </header>
+
+  <section class="info-banner">
+    <p>1 participant haven't submitted their cart yet — Still choosing.</p>
+  </section>
+
+  <ul class="participants-list">
+    <!-- 1. ВАШ ОСНОВНИЙ ЦИКЛ (зараз він пустий і чекає на Рівень 2) -->
     @for (person of participants(); track person.id) {
-      <li><app-participant-card [participant]="person" /></li>
+      <li>
+        <app-participant-card [participant]="person" />
+      </li>
+    }
+  <!-- 2. ОКРЕМИЙ ЦИКЛ СУТО ДЛЯ КАРТОК РІВНЯ 1 (працює, поки основний список пустий) -->
+    @if (participants().length === 0) {
+      @for (testPerson of [mockOwner, mockGuest1, mockGuest2, mockGuest3]; track testPerson.id) {
+        <li>
+          <app-participant-card [participant]="testPerson" />
+        </li>
+      }
     }
   </ul>
+
+  <footer class="page-footer">
+    <div class="grand-total-row">
+      <span class="total-label">Grand Total</span>
+      <span class="total-value">$74.50</span>
+    </div>
+
+    <button class="submit-btn" type="button">
+      Submit Pre-Order
+    </button>
+  </footer>
 </main>

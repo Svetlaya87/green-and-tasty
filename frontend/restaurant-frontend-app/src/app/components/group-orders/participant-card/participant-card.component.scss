@@ -1,10 +1,13 @@
 @use 'app/shared/styles/abstracts/colors' as color;
+*{
+  box-sizing: border-box;
+}
 
 // Головна обгортка картки гостя
 .guest-card {
   background-color: color.$neutral-0;
   border-radius: 16px;
-  padding: 24px;
+  padding: 8px;
   margin-bottom: 20px;
   border: 1px solid color.$neutral-200;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
@@ -87,7 +90,8 @@
 .dish-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
+  gap: 4px;
   padding: 8px 0;
   list-style: none !important;
 }
@@ -148,8 +152,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  gap: 16px;
+  //width: 100%;
+  //gap: 16px;
 
   .dish-name {
     font-size: 14px;

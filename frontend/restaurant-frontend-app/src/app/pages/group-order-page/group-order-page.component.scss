@@ -1,18 +1,37 @@
 @use 'app/shared/styles/abstracts/colors' as color;
+*{
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  overflow-x: hidden; // Полная блокировка горизонтального скролла
+}
+
 li {
   list-style-type: none;
 }
+
 // Загальний контейнер сторінки - додаємо фонові відступи для ефекту "картки у повітрі"
 .page-container {
+  //width: 100%;
+  //max-width: 100%;
   min-width: 375px;
   max-width: 680px;
   margin: 40px auto;
-  padding: 32px 24px;
+  padding: 16px;
   background-color: color.$neutral-0;
   border-radius: 16px;
   border: 1px solid color.$neutral-200;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
+    // Точковий медіа-запит для мобільних пристроїв
+  @media (max-width: 480px) {
+    margin: 10px auto;
+    padding: 8px; // Суттєво зменшуємо відступи сторінки зліва і справа
+    border-radius: 8px;
+  }
+
 }
 
 // Стилі для заголовка та його бейджа
@@ -68,7 +87,7 @@ li {
 .guest-card {
   background-color: color.$neutral-0;
   border-radius: 12px;
-  padding: 24px;
+  padding: 8px;
   margin-bottom: 24px;
   border: 1px solid #e5e7eb;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
@@ -147,7 +166,7 @@ li {
 .dish-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   padding: 8px 0;
   list-style-type: none !important; // Додатковий захист від кружечків
 }
@@ -193,7 +212,7 @@ li {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  gap: 16px;
+  //gap: 16px;
 
   .dish-name {
     font-size: 14px;

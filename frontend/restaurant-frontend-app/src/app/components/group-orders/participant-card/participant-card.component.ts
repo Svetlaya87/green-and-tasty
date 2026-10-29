@@ -8,6 +8,7 @@ import { Participant } from '@app/models/group-orders/participant.model';
   standalone: true,
   imports: [CurrencyPipe],
   templateUrl: './participant-card.component.html',
+  styleUrls: ['./participant-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ParticipantCardComponent {

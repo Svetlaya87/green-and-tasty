@@ -1,0 +1,239 @@
+@use 'app/shared/styles/abstracts/colors' as color;
+
+// Головна обгортка картки гостя
+.guest-card {
+  background-color: color.$neutral-0;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid color.$neutral-200;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+
+  &.owner-card {
+    border-top: 4px solid color.$green-400;
+  }
+}
+
+// Шапка картки (Ім'я та статус/дії)
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid color.$neutral-100;
+
+  .guest-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+      color: color.$neutral-900;
+    }
+  }
+}
+
+// Статус кошика текстом
+.cart-status {
+  font-size: 12px;
+  font-weight: 500;
+  color: color.$orange-600;
+
+  &.status-submitted {
+    color: color.$green-400;
+  }
+}
+
+// Кнопки дій (Edit / Remove Guest)
+.action-link {
+  background: none;
+  border: none;
+  color: color.$neutral-600;
+  text-decoration: underline;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    color: color.$neutral-900;
+  }
+
+  &.remove-btn {
+    color: color.$neutral-600;
+
+    &:hover {
+      color: color.$red-400;
+    }
+  }
+}
+
+// Список страв всередині картки
+.dishes-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// Рядок однієї страви
+.dish-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+  list-style: none !important;
+}
+
+// Кнопка видалення окремої страви (іконка смітника)
+.delete-dish-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: color.$neutral-400;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: color.$red-400;
+  }
+}
+
+// Аватар або заміна зображення страви
+.dish-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .dish-img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .letter-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: color.$green-100;
+    color: color.$green-600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+// Інформаційний блок страви
+.dish-info {
+  flex-grow: 1;
+}
+
+// Головний лінійний ряд для вирівнювання: Назва -> Кнопки +/- -> Ціна
+.dish-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+
+  .dish-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: color.$neutral-900;
+    flex-grow: 1;
+  }
+
+  .dish-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: color.$neutral-900;
+    min-width: 60px;
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+
+// Візуальний блок лічильника кількості страв (+ / -) з макета
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  background-color: color.$neutral-100;
+  border: 1px solid color.$neutral-200;
+  border-radius: 8px;
+  padding: 2px;
+  gap: 8px;
+
+  .qty-btn {
+    background: color.$neutral-0;
+    border: 1px solid color.$neutral-200;
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: color.$neutral-700;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+
+    &:hover {
+      background-color: color.$neutral-100;
+      color: color.$neutral-900;
+    }
+  }
+
+  .qty-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: color.$neutral-900;
+    min-width: 14px;
+    text-align: center;
+  }
+}
+
+// Заглушка для повідомлення про пустий кошик
+.empty-cart-msg {
+  color: color.$neutral-400;
+  font-style: italic;
+  margin: 16px 0;
+}
+
+// Футер картки із сумою замовлення учасника
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid color.$neutral-100;
+
+  .subtotal-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: color.$neutral-900;
+  }
+
+  .subtotal-val {
+    font-size: 16px;
+    font-weight: 600;
+    color: color.$neutral-900;
+  }
+}

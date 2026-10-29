@@ -1,163 +1,187 @@
 @use 'app/shared/styles/abstracts/colors' as color;
 
-// Головний контейнер сторінки
-.page-container {
-  min-width: 375px; // Гарантія від ТЗ: екран не ламається на ширині 375px
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 24px 16px;
-  background-color: color.$neutral-100;
-  box-sizing: border-box;
+.guest-card {
+  background-color: color.$neutral-0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
 
-  @media (max-width: 400px) {
-    padding: 16px 12px;
+  &.owner-card {
+    border-top: 4px solid color.$green-400;
   }
 }
 
-// Шапка сторінки
-.page-header {
-  margin-bottom: 24px;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f3f4f6;
 
-  .title-container {
+  .guest-meta {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 4px;
 
-    h1 {
-      font-size: 26px;
+    h2 {
+      font-size: 16px;
       font-weight: 600;
-      letter-spacing: -0.5px;
       margin: 0;
       color: color.$neutral-900;
     }
   }
 }
 
-// Бейдж статусу замовлення
-.header-badge {
-  background-color: color.$orange-100;
-  color: color.$orange-600;
+.cart-status {
   font-size: 12px;
   font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 20px;
-  text-transform: capitalize;
+  color: #d97706;
+
+  &.status-submitted {
+    color: color.$green-400;
+  }
 }
 
-// Семантичний блок мета-даних (адреса, дата тощо)
-.meta-bar {
-  font-style: normal; // Скидаємо курсив від тегу <address>
+.action-link {
+  background: none;
+  border: none;
+  color: color.$neutral-600;
+  text-decoration: underline;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
 
-  .meta-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    row-gap: 8px;
+  &:hover {
+    color: color.$neutral-900;
   }
 
-  .meta-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
+  &.remove-btn {
     color: color.$neutral-700;
-    white-space: nowrap;
 
-    .icon {
-      font-size: 15px;
+    &:hover {
+      color: color.$red-400;
     }
   }
 }
 
-// Жовта інформаційна плашка про непідтверджені кошики
-.info-banner {
-  background-color: color.$bg-yellow;
-  border: 1px solid color.$orange-100;
-  border-radius: 10px;
-  padding: 14px 16px;
-  margin-bottom: 28px;
-  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.05);
-
-  p {
-    margin: 0;
-    font-size: 13.5px;
-    line-height: 1.45;
-    color: color.$orange-600;
-    font-weight: 400;
-  }
-}
-
-// Список карток учасників
-.participants-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 120px 0; // Великий відступ знизу, щоб фіксований футер не перекривав контент
+// Прибираємо точки у списку страв
+.dishes-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-// Нижній фіксований блок (Футер сторінки з Grand Total)
-.page-footer {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 680px;
-  background-color: color.$neutral-0;
-  padding: 20px 16px;
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.06);
-  border-radius: 20px 20px 0 0;
-  box-sizing: border-box;
-  z-index: 100;
+// Вирівнюємо всю страву в один рядок
+.dish-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+  list-style-type: none !important; // Додатковий захист від кружечків
 }
 
-// Рядок суми
-.grand-total-row {
+.dish-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dish-img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.letter-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  color: color.$neutral-600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+// Головний контейнер інформації про страву
+.dish-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+// Будуємо назву, лічильник та ціну строго в один лінійний ряд!
+.dish-title-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  width: 100%;
+  gap: 16px;
 
-  .total-label {
-    font-size: 18px;
+  .dish-name {
+    font-size: 14px;
     font-weight: 500;
     color: color.$neutral-900;
+    max-width: 250px;
   }
 
-  .total-value {
-    font-size: 26px;
+  .dish-qty {
+    font-size: 14px;
+    color: color.$neutral-600;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .dish-price {
+    font-size: 14px;
     font-weight: 600;
-    color: color.$green-400; // Яскравий зелений колір за макетом Grand Total
+    color: color.$neutral-900;
+    margin-left: auto; // Притискає ціну до правого краю
+    white-space: nowrap;
   }
 }
 
-// Головна кнопка відправки
-.submit-btn {
-  width: 100%;
-  background: color.$green-gradient;
-  color: color.$neutral-0;
-  border: none;
-  border-radius: 12px;
-  padding: 16px;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
-  transition: transform 0.1s ease, opacity 0.2s ease;
+.dish-comment {
+  margin: 0;
+  font-size: 12px;
+  color: color.$neutral-600;
+}
 
-  &:hover {
-    opacity: 0.95;
+.empty-cart-msg {
+  color: color.$neutral-400;
+  font-style: italic;
+  margin: 16px 0;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+
+  .subtotal-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: color.$neutral-900;
   }
 
-  &:active {
-    transform: scale(0.99);
+  .subtotal-val {
+    font-size: 16px;
+    font-weight: 700;
+    color: color.$neutral-900;
   }
 }
